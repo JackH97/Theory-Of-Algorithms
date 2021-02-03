@@ -1,24 +1,32 @@
 #include <stdio.h>
 
+void bin_print(int i) {
+    int j = sizeof(int) * 8;
+
+    // Temporary Variable.
+    int k;
+
+    for (j-- ; j >=0; j--) {
+        k = ((1 << j) & i) ? 1 : 0;  // Tuniery operator
+        printf("%d", k);
+        
+    }
+}
+
 int main(int argc, char *argv[]) {
 
-    int i = 0xF1; // 11110001
+    int i = 241; 
 
-    printf("Hex: %d\n", i);
-    printf("Hex: %x\n", i);
+    printf("Original:  ");
+    bin_print(i);
     printf("\n");
-    printf("Size of i: %d\n", sizeof(i));
-    printf("Size of int: %d\n", sizeof(int));
-    printf("Size of char: %d\n", sizeof(char));
     printf("\n");
-    char c = 241;
-    printf("c in Char is: %c\n", c);
-    printf("c in int is: %d\n", c);
-    printf("\n");
-    int j = 1000000000;
-    printf("j in int is: %d\n", j);
-    printf("j in Char is: %c\n", j);
-    printf("j in int from char is: %d\n",(char) j);
+
+    for (int j = 0; j < 40; j++) {
+        printf("%3d << %2d: ", i, j);
+        bin_print(i << j);
+        printf("\n");
+    }
 
     return 0;
 }
