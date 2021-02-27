@@ -3,7 +3,7 @@
 
 #define WORD uint32_t
 
-uint32_t ch(uint32_t x, uint32_t y, uint32_t z)
+uint32_t Ch(uint32_t x, uint32_t y, uint32_t z)
 {
     return (x&y)^(~x&z);
 }
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     uint32_t ans = Ch(x, y, z);
 
-    print("Ch(%d,%d,%d)=%d\n", x, y, z, ans);
+    printf("Ch(" PRIu32 "," PRIu32 "," PRIu32 ")=" PRIu32 "\n", x, y, z, ans);
 
     return 0;
 }
