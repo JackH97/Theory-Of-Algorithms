@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     uint32_t ans = Ch(x, y, z);
 
-    printf("Ch(" PRIu32 "," PRIu32 "," PRIu32 ")=" PRIu32 "\n", x, y, z, ans);
+    printf("Ch(%" PRIu32 ",%" PRIu32 ",%" PRIu32 ")=%" PRIu32 "\n", x, y, z, ans);
 
     return 0;
 }
