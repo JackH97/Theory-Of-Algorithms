@@ -12,10 +12,13 @@ int main(int argc, char *argv[]) {
     size_t nobytes;
 
     nobytes = fread(&b, 1, 1, f);
+    printf("%c", b);
     while (nobytes) {
         nobytes = fread(&b, 1, 1, f);
+        printf("%c", b);
     }
     fclose(f);
+    printf("\n")
 
     
     return 0;
