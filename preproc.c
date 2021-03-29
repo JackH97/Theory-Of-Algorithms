@@ -12,22 +12,55 @@ union Block {
 };
 
 enum Status {
-    READ, PAD0, PAD1, END
+    READ, PAD, END
 };
 
 // Get the next block.
 int next_block(FILE *f, union Block *B, enum Status *S, uint64_t *nobits)
 {
+    // Number of bytes read.
+    size_t nobytes;
+
+    if (*S == READ) {
+        // Try to read 64 bytes.
+        nobytes = fread(B->bytes, 1, 64, f)
+        // Calculate the total bits read so far.
+        *nobits = *nobits + (8 * nobytes);
+        // Enough room for padding.
+        if (nobytes == 64) {
+            return1;
+        } else if (nobytes <= 55) {
+            // Append a 1 bit (and seven 0 bits to make a full byte).
+            B->bytes[nobytes++] = 0x80; // In bits: 1000000
+            // Append enough 0 bits, leaving 64 at the end.
+            while (nobytes++ < 56) {
+                 B->bytes[nobytes] = 0x00; // In bits: 00000000
+            }
+            // Append length of original input (CHECK ENDIANESS).
+            B->sixf[7] = *nobits;
+            // Say this is the last block.
+            *S = END;
+        } else {
+            // Got to the end of the input message and not enough room
+            // in this block for all padding.
+            // Append a 1 bit (and seven 0 bits to make a full byte.)
+            B->bytes[nobytes] = 0x80;
+            // Append 0 bits.
+            while (nobytes++; nobytes < 64; nobytes++) {
+                 // Error: trying to write to 
+                B->bytes[nobytes] = 0x00; // In bits: 00000000
+            }
+            // Change the status to PAD.
+            *S = PAD;
+        }
+    }
+
     // Same here.
         nobytes = fread(&B.bytes, 1, 64, f);
         printf("Read %d bytes.\n", nobytes);
         nobits = nobits + (8 * nobytes);
-        // Print the 16 32-bit words.
-        for (i = 0; i < 16; i++) {
-            printf("%08" PF " ", B.words[i]);
-            if ((i + 1) % 8 == 0)
-                printf("\n");
-        }
+        
+        return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -46,9 +79,6 @@ int main(int argc, char *argv[]) {
 
     // Open file from command line for reading.
     f = fopen(argv[1], "r");
-    
-    // Number of bytes read.
-    size_t nobytes;
 
     // Loop through (preprocessed) the blocks.
     while (next_block(f, &B, &S, &nobits)) {
@@ -57,8 +87,10 @@ int main(int argc, char *argv[]) {
         }
         printf("\n");
     }
+
     // Close the file.
     fclose(f);
+    
     // Print total number of bits read.
     printf("Total bits read: %d.\n", nobits);
 
