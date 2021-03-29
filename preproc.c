@@ -58,7 +58,7 @@ int next_block(FILE *f, union Block *B, enum Status *S, uint64_t *nobits) {
             B->bytes[nobytes] = 0x80;
             // Append 0 bits.
             for (nobytes++; nobytes < 64; nobytes++) {
-                 // Error: trying to write to 
+                 // Error: trying to write to B->nobytes[64]
                 B->bytes[nobytes] = 0x00; // In bits: 00000000
             }
             // Change the status to PAD.
