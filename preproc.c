@@ -1,4 +1,3 @@
-  
 #include <stdio.h>
 #include <inttypes.h>
 
@@ -11,6 +10,25 @@ union Block {
     BYTE bytes[64];
     WORD words[16];
 };
+
+enum Status {
+    READ, PAD0, PAD1, END
+};
+
+// Get the next block.
+int next_block(FILE *f, union Block *B, enum Status *S, uint64_t *nobits)
+{
+    // Same here.
+        nobytes = fread(&B.bytes, 1, 64, f);
+        printf("Read %d bytes.\n", nobytes);
+        nobits = nobits + (8 * nobytes);
+        // Print the 16 32-bit words.
+        for (i = 0; i < 16; i++) {
+            printf("%08" PF " ", B.words[i]);
+            if ((i + 1) % 8 == 0)
+                printf("\n");
+        }
+}
 
 int main(int argc, char *argv[]) {
 
@@ -25,34 +43,19 @@ int main(int argc, char *argv[]) {
 
     // File pointer for reading.
     FILE *f;
+
     // Open file from command line for reading.
     f = fopen(argv[1], "r");
     
     // Number of bytes read.
     size_t nobytes;
-    // Try to read 64 bytes.
-    nobytes = fread(B.bytes, 1, 64, f);
-    // Tell the command line how many we read.
-    printf("Read %d bytes.\n", nobytes);
-    // Update number of bits read.
-    nobits = nobits + (8 * nobytes);
-    // Print the 16 32-bit words.
-    for (i = 0; i < 16; i++) {
-        printf("%08" PF " ", B.words[i]);
-        if ((i + 1) % 8 == 0)
-            printf("\n");
-    }
-    while (!feof(f)) {
-        // Same here.
-        nobytes = fread(&B.bytes, 1, 64, f);
-        printf("Read %d bytes.\n", nobytes);
-        nobits = nobits + (8 * nobytes);
-        // Print the 16 32-bit words.
+
+    // Loop through (preprocessed) the blocks.
+    while (next_block(f, &B, &S, &nobits)) {
         for (i = 0; i < 16; i++) {
             printf("%08" PF " ", B.words[i]);
-            if ((i + 1) % 8 == 0)
-                printf("\n");
         }
+        printf("\n");
     }
     // Close the file.
     fclose(f);
