@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include <inttypes.h>
-
-// Endianess. Adapted from:
-//   https://developer.ibm.com/technologies/systems/articles/au-endianc/
 #include <byteswap.h>
 const int _i = 1;
 #define islilend() ((*(char*)&_i) != 0)
