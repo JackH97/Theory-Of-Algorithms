@@ -75,7 +75,7 @@ int next_block(FILE *f, union Block *M, enum Status *S, uint64_t *nobits) {
         // Finish.
         return 0;
     } else if (*S == READ) {
-        // Try to read 64 bytes from the input file.
+        // Try to read 128 bytes from the input file.
         nobytes = fread(M->bytes, 1, 128, f);
         // Calculate the total bits read so far.
         *nobits = *nobits + (8 * nobytes);
@@ -156,6 +156,27 @@ int next_hash(union Block *M, WORD H[]) {
     // Section 6.2.2, part 4.
     H[0] = a + H[0]; H[1] = b + H[1]; H[2] = c + H[2]; H[3] = d + H[3];
     H[4] = e + H[4]; H[5] = f + H[5]; H[6] = g + H[6]; H[7] = h + H[7];
+
+    return 0;
+}
+
+int sha512(FILE *f, WORD H[]) {
+    // The function that performs/orchestrates the SHA512 algorithm on
+    // message f.
+
+    // The current block.
+    union Block M;
+
+    // Total number of bits read.
+    uint64_t nobits = 0;
+
+    // Current status of reading input.
+    enum Status S = READ;
+
+    // Loop through the (preprocessed) blocks.
+    while (next_block(f, &M, &S, &nobits)) {
+        next_hash(&M, H);
+    }
 
     return 0;
 }
