@@ -4,7 +4,26 @@ This repository on my github account is for the project for Theory of Algorithms
 For this project we were asked to write must write a program in the C programming language to calculate the SHA512 value of an input file. This program must take the name or path of the file as a command line argument and output the SHA512 digest of it. We also could't use any external libraries other than the libraries that are included in the C standard library. The program must compile using `gcc` or `clang` and also have to include a `Makefile`. which compiles it upon make being called in the project folder.
 
 
-## Explain what SHA-512 is??
+## What is the SHA-512 algorithm?
+The SHA-512 algorithm is a hashing algorithm that performs a hashing function on some data given to it while. It’s part of a group of hashing algorithms called SHA-2 which includes SHA-256 as well which is used in the bitcoin blockchain for hashing while operating on 8 64 bit words. This algorithm functions on a 1024-bit message block and a hash value of 512-bit. 
+### Hashing Function
+Hashing Functions are functions that take data as an input and then produce an output called a hash digest of a fixed length for the input data. There are however conditions that have to be met to satisfy this such as 1: Uniform distribution, 2: Fixed length and 3: Collision resistance. For uniform distribution, this should be for any value inputted, the outputted value of any possible result should be likely equally. For fixed length, the resulting values should be all of a certain length etc sha-512 has output size of 512 bits. For collision resistance, this means that no two inputted values in the hash function have the same outputted result. 
+
+Some of the main points to discuss about the sha-512 are 1. Input formatting, 2. Hash buffer initialization, 3. Message processing and 4. Output.
+With input formatting, the sha-512 can't hash a message of any size as it has a size limit. Because of this, the formatted message has three parts, the original message, padding bits and size of original message and with this it should have a whole size of a multiple of 1024 bits. With Hash buffer initialization, it processes each part of 1024 bits from a message using the result from previous amount. But with this there's a problem with the first 1024 bits which we can't use results from previous processing. So what we do is use the default value for the first block to start the process off. 
+
+
+
 
 ## The Implementation of code
 
+
+
+
+
+
+## References
+point 1 and 2 are about sha 512 algorithm
+
+1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
+2. http://www.iwar.org.uk/comsec/resources/cipher/sha256-384-512.pdf
