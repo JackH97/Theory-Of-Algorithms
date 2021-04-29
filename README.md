@@ -30,9 +30,12 @@ With `Message Processing`, it's done by taking one block of 1024 bits per go. To
 
 With `Output`, after every 1024 bit block goes into the message processing phase, we get the final 512 bit value of the original message. Then the results of all blocks are processed to the next block and finally when the final 1024 bit block is finished, we have the result of the algorithm and we recieve the hash value of the original message. 
 
+The importance i find with the sha-512 is it having a larger internal state and more number of rounds and because of this has a higher bit strength. Security involved with this algorithm is also very good as there is no technology that is capable of breaking this algorithm or even the sha256 and compatibility is also a big factor of this algorithm.
 
 ## References
 point 1 and 2 are about sha 512 algorithm
 
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
 2. http://www.iwar.org.uk/comsec/resources/cipher/sha256-384-512.pdf
+3. https://core.ac.uk/download/pdf/186473296.pdf
+4. https://blog.komodoplatform.com/en/sha-512/
