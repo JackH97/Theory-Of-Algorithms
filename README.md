@@ -9,13 +9,17 @@ The SHA-512 algorithm is a hashing algorithm that performs a hashing function on
 ### Hashing Function
 Hashing Functions are functions that take data as an input and then produce an output called a hash digest of a fixed length for the input data. There are however conditions that have to be met to satisfy this such as 1: Uniform distribution, 2: Fixed length and 3: Collision resistance. For uniform distribution, this should be for any value inputted, the outputted value of any possible result should be likely equally. For fixed length, the resulting values should be all of a certain length etc sha-512 has output size of 512 bits. For collision resistance, this means that no two inputted values in the hash function have the same outputted result. 
 
-Some of the main points to discuss about the sha-512 are 1. Input formatting, 2. Hash buffer initialization, 3. Message processing and 4. Output.
-With input formatting, the sha-512 can't hash a message of any size as it has a size limit. Because of this, the formatted message has three parts, the original message, padding bits and size of original message and with this it should have a whole size of a multiple of 1024 bits. With Hash buffer initialization, it processes each part of 1024 bits from a message using the result from previous amount. But with this there's a problem with the first 1024 bits which we can't use results from previous processing. So what we do is use the default value for the first block to start the process off. 
+### Process of sha-512
+Some of the main points to discuss about the sha-512 are, 
+1. Input formatting 
+2. Hash buffer initialization
+3. Message processing 
+4. Output.
+ 
+With input formatting, the sha-512 can't hash a message input of any size as it has a size limit. Because of this, the formatted message has three parts, the original message, padding bits and size of original message and with this it should have a whole size of a multiple of 1024 bits. Because of this the message that has been formatted will then be processed as blocks of 1024 bits each then and with that each block then is able to work with 1024 bits each. We take the input message and it is then we add some padding bits to get it to the length needed. The padding is done with 0 bits and 1 bits and with this algorithm padding has to be done even if its only one bit. After this processing the message is giving to the algorithm to be appended and from here the size of the message is changed to 128 bits because of the limitations of the input message with the sha-512 algorithm. After this the padding bits and size of the message have been completed.
 
+With Hash buffer initialization, it processes each part of 1024 bits from a message using the result from previous amount. But with this there's a problem with the first 1024 bits which we can't use results from previous processing. So what we do is use the default value for the first block to start the process off. 
 
-
-
-## The Implementation of code
 
 
 
