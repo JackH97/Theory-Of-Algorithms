@@ -19,7 +19,6 @@ Some of the main points to discuss about the sha-512 are,
 With `Input Formatting`, the sha-512 can't hash a message input of any size as it has a size limit. Because of this, the formatted message has three parts, the original message, padding bits and size of original message and with this it should have a whole size of a multiple of 1024 bits. Because of this the message that has been formatted will then be processed as blocks of 1024 bits each then and with that each block then is able to work with 1024 bits each. We take the input message and it is then we add some padding bits to get it to the length needed. The padding is done with 0 bits and 1 bits and with this algorithm padding has to be done even if its only one bit. After this processing the message is giving to the algorithm to be appended and from here the size of the message is changed to 128 bits because of the limitations of the input message with the sha-512 algorithm. After this the padding bits and size of the message have been completed.<br>
 ![Message + Padding + Size](https://gyazo.com/ebd8834278486bf315f6beee5bbf88cd.png)
 
-
 With `Hash Buffer Initialization`, it processes each part of 1024 bits from a message using the result from previous amount. But with this there's a problem with the first 1024 bits which we can't use results from previous processing. So what we do is use the default value for the first block to begin. With every result needed to be used in the processing stage, it's stored elsewhere to be used later in the process and this is done by the hash buffer and this is what holds the final hash value of the processing phase of the sha-512.
 
 ![Hash buffer and Initialization Vector values](https://gyazo.com/4cb5aee3c80905c83aae3f993f5f3a3c.png)
@@ -32,7 +31,6 @@ With `Output`, after every 1024 bit block goes into the message processing phase
 
 The importance i find with the sha-512 is it having a larger internal state and more number of rounds and because of this has a higher bit strength. Security involved with this algorithm is also very good as there is no technology that is capable of breaking this algorithm or even the sha256 and compatibility is also a big factor of this algorithm.
 
-
 ## Questions
 ### Why can't we reverse the SHA512 algorithm to retrieve the original message from a hash digest?
 One of the main reasons we can't reverse the sha-512 algorithm because it is a hashing function and because of this it can't be reversed because it is a one-way function. other reasons for us not being able to reverse the algorithm are... 
@@ -40,7 +38,12 @@ One of the main reasons we can't reverse the sha-512 algorithm because it is a h
 - The `hash speed` algorithm operates at a resonable speed and it works out the hash values quickly and this is a key part of the speed. With that being said in terms of the algorithm its not always ideal to be very fast and the speed all depends on what it's also being used for. If i wanted it to be fast hashing algorithm it would suit website connections and if i wanted it to be slower i'd use it for password hashing.
 - `Bit Dependency` is also a huge factor of why it can't be reversed becuase a hash algorithm is designed to guarantee each bit of the output of the algorithm is dependent on each bit of the input. Because of this, it prevents the algorithm being split up and try to reverse the calculation of the input from each bit of the hash output. so if you want to solve one output bit, you need to know the entire input which can be a daunting task.
 
-Another bit point to discuss about this is hash functions
+Another bit point to discuss about this is hash functions. These have a big purpose in cryptography. They take a plaintext input and generate a hash value of the output in a specific size in a way that can't allow for it to be reversed. Perks of a strong hash functions are...
+- Ensuring data integrity
+- Secure against unauthorized modifications
+- Protect stored passwords
+- Operate at different speeds to suit different purposes <br>
+Most of the data that is taken in is discarded during the hash process stage. The user can make the input file and add whatever they would like to it but at the end of the day the output will stay the same because of the data that will be left over and not used. For this reason is usually never found as to what the data of the input file was from looking at the results after using the algorithm. 
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
@@ -51,3 +54,4 @@ Another bit point to discuss about this is hash functions
 6. https://crypto.stackexchange.com/questions/89690/sha-512-how-difficult-is-it-to-find-a-hash-digest-beginning-with-at-least-twel
 7. https://bitcoin.stackexchange.com/questions/65478/which-is-the-smallest-hash-that-has-ever-been-hashed
 8. https://crypto.stackexchange.com/questions/45377/why-cant-we-reverse-hashes
+9. https://www.thesslstore.com/blog/what-is-a-hash-function-in-cryptography-a-beginners-guide/
