@@ -32,10 +32,19 @@ With `Output`, after every 1024 bit block goes into the message processing phase
 
 The importance i find with the sha-512 is it having a larger internal state and more number of rounds and because of this has a higher bit strength. Security involved with this algorithm is also very good as there is no technology that is capable of breaking this algorithm or even the sha256 and compatibility is also a big factor of this algorithm.
 
-## References
-point 1 and 2 are about sha 512 algorithm
 
+## Questions
+### Why can't we reverse the SHA512 algorithm to retrieve the original message from a hash digest?
+One of the main reasons we can't reverse the sha-512 algorithm because it is a hashing function and because of this it can't be reversed because it is a one-way function. other reasons for us not being able to reverse the algorithm are... 
+The `Avalanche effect` because any changes made to the input even if its adding or removing a comma will cause a huge effect in the internal part of the algorithm and also in the output of the final result. Because of this it stop people building up relatonships between inputs and outputs.
+The `hash speed` algorithm operates at a resonable speed and it works out the hash values quickly and this is a key part of the speed. With that being said in terms of the algorithm its not always ideal to be very fast and the speed all depends on what it's also being used for. If i wanted it to be fast hashing algorithm it would suit website connections and if i wanted it to be slower i'd use it for password hashing
+
+## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
 2. http://www.iwar.org.uk/comsec/resources/cipher/sha256-384-512.pdf
 3. https://core.ac.uk/download/pdf/186473296.pdf
 4. https://blog.komodoplatform.com/en/sha-512/
+5. https://security.stackexchange.com/questions/145284/why-cant-sha256-be-decrypted#:~:text=SHA256%20is%20a%20hashing%20function%2C%20not%20an%20encryption%20function.&text=In%20that%20case%2C%20SHA256%20cannot,which%20defeats%20its%20design%20goal.
+6. https://crypto.stackexchange.com/questions/89690/sha-512-how-difficult-is-it-to-find-a-hash-digest-beginning-with-at-least-twel
+7. https://bitcoin.stackexchange.com/questions/65478/which-is-the-smallest-hash-that-has-ever-been-hashed
+8. https://crypto.stackexchange.com/questions/45377/why-cant-we-reverse-hashes
