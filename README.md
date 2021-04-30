@@ -36,8 +36,11 @@ The importance i find with the sha-512 is it having a larger internal state and 
 ## Questions
 ### Why can't we reverse the SHA512 algorithm to retrieve the original message from a hash digest?
 One of the main reasons we can't reverse the sha-512 algorithm because it is a hashing function and because of this it can't be reversed because it is a one-way function. other reasons for us not being able to reverse the algorithm are... 
-The `Avalanche effect` because any changes made to the input even if its adding or removing a comma will cause a huge effect in the internal part of the algorithm and also in the output of the final result. Because of this it stop people building up relatonships between inputs and outputs.
-The `hash speed` algorithm operates at a resonable speed and it works out the hash values quickly and this is a key part of the speed. With that being said in terms of the algorithm its not always ideal to be very fast and the speed all depends on what it's also being used for. If i wanted it to be fast hashing algorithm it would suit website connections and if i wanted it to be slower i'd use it for password hashing
+- The `Avalanche effect` because any changes made to the input even if its adding or removing a comma will cause a huge effect in the internal part of the algorithm and also in the output of the final result. Because of this it stop people building up relatonships between inputs and outputs.
+- The `hash speed` algorithm operates at a resonable speed and it works out the hash values quickly and this is a key part of the speed. With that being said in terms of the algorithm its not always ideal to be very fast and the speed all depends on what it's also being used for. If i wanted it to be fast hashing algorithm it would suit website connections and if i wanted it to be slower i'd use it for password hashing.
+- `Bit Dependency` is also a huge factor of why it can't be reversed becuase a hash algorithm is designed to guarantee each bit of the output of the algorithm is dependent on each bit of the input. Because of this, it prevents the algorithm being split up and try to reverse the calculation of the input from each bit of the hash output. so if you want to solve one output bit, you need to know the entire input which can be a daunting task.
+
+Another bit point to discuss about this is hash functions
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
