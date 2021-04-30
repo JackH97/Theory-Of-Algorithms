@@ -43,6 +43,7 @@ Another bit point to discuss about this is hash functions. These have a big purp
 - Secure against unauthorized modifications
 - Protect stored passwords
 - Operate at different speeds to suit different purposes <br>
+
 Most of the data that is taken in is discarded during the hash process stage. The user can make the input file and add whatever they would like to it but at the end of the day the output will stay the same because of the data that will be left over and not used. For this reason is usually never found as to what the data of the input file was from looking at the results after using the algorithm. 
 
 ## References
