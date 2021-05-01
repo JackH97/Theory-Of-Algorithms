@@ -44,7 +44,11 @@ Another bit point to discuss about this is hash functions. These have a big purp
 - Protect stored passwords
 - Operate at different speeds to suit different purposes <br>
 
-Most of the data that is taken in is discarded during the hash process stage. The user can make the input file and add whatever they would like to it but at the end of the day the output will stay the same because of the data that will be left over and not used. For this reason is usually never found as to what the data of the input file was from looking at the results after using the algorithm. 
+Most of the data that is taken in is discarded during the hash process stage. The user can make the input file and add whatever they would like to it but at the end of the day the output will stay the same because of the data that will be left over and not used. For this reason is usually never found as to what the data of the input file was from looking at the results after using the algorithm. <br>
+
+### Can you design an algorithm that, given enough time, will find input message that give each of the possible 512-bit strings?
+From my understanding of the question, there maybe a possibility of designing an algorithm for finding the input message of the 512-bit strings. First way i found is by using a brute force method which is a way on solving a problem by using computer power and trying to find every possibility rather than advanced techniques to improve efficiency. 
+It usually iterates over all input messages to find a specific result. With that being said it is also a big ask as you would have to review all input messages for sha-512 and if you did you would probably find the the same matches. 
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
@@ -56,3 +60,5 @@ Most of the data that is taken in is discarded during the hash process stage. Th
 7. https://bitcoin.stackexchange.com/questions/65478/which-is-the-smallest-hash-that-has-ever-been-hashed
 8. https://crypto.stackexchange.com/questions/45377/why-cant-we-reverse-hashes
 9. https://www.thesslstore.com/blog/what-is-a-hash-function-in-cryptography-a-beginners-guide/
+10. https://www.quora.com/Is-it-possible-to-bruteforce-sha512-hash-function
+11. https://www.freecodecamp.org/news/brute-force-algorithms-explained/#:~:text=Brute%20Force%20Algorithms%20are%20exactly,%2C%20each%20from%200%2D9.
