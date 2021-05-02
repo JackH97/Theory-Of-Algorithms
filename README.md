@@ -48,7 +48,7 @@ Most of the data that is taken in is discarded during the hash process stage. Th
 
 ### Can you design an algorithm that, given enough time, will find input message that give each of the possible 512-bit strings?
 From my understanding of the question, there maybe a possibility of designing an algorithm for finding the input message of the 512-bit strings. First way i found is by using a brute force method which is a way on solving a problem by using computer power and trying to find every possibility rather than advanced techniques to improve efficiency. 
-It usually iterates over all input messages to find a specific result. With that being said it is also a big ask as you would have to review all input messages for sha-512 and if you did you would probably find the the same matches. 
+It usually iterates over all input messages to find a specific result. With that being said it is also a big ask as you would have to review all input messages for sha-512 and if you did you would probably find the the same matches. From what i have read then it all depends then on the input and distribution of messages within that domain to find the message for the sha-512 output. Example i found also is with 128 bits of the input can be regarded unknown and then brute forcing the sha-512 becomes impossible. 
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
