@@ -48,7 +48,13 @@ Most of the data that is taken in is discarded during the hash process stage. Th
 
 ### Can you design an algorithm that, given enough time, will find input message that give each of the possible 512-bit strings?
 From my understanding of the question, there maybe a possibility of designing an algorithm for finding the input message of the 512-bit strings. First way i found is by using a brute force method which is a way on solving a problem by using computer power and trying to find every possibility rather than advanced techniques to improve efficiency. 
-It usually iterates over all input messages to find a specific result. With that being said it is also a big ask as you would have to review all input messages for sha-512 and if you did you would probably find the the same matches. From what i have read then it all depends then on the input and distribution of messages within that domain to find the message for the sha-512 output. Example i found also is with 128 bits of the input can be regarded unknown and then brute forcing the sha-512 becomes impossible. 
+It usually iterates over all input messages to find a specific result. With that being said it is also a big ask as you would have to review all input messages for sha-512 and if you did you would probably find the the same matches. From what i have read then it all depends then on the input and distribution of messages within that domain to find the message for the sha-512 output. Example i found also is with 128 bits of the input can be regarded unknown and then brute forcing the sha-512 becomes impossible. From my reading, an approved hash function is expected to have three properties[12]...
+- Collision Resistance: It's impossible to find two different inputs to the hash function that have the same hash value. But only if the hash is a function. Collision Resistance is measured by the amount of work needed to find a collision for the hash function with a high probabliltiy.
+- Preimage resistance: Given a randomly chosen hash value called hash_value, it is computationally infeasible to find an x so that hash(x) = hash_value. This property is also called the one-way property. This is measured by the amount of work that would be neded to have a big possibility of finding the preimage of a hash function.
+- Second preimage resistance: Like the first time it's impossible to find a second input that has the same hash value as other inputs. For this it is measured by the amount of work that would be needed to have a high probability of finding a second preimage for a hash function. However, for some hash functions, the second preimage resistance strength also depends on the message length processed by the hash function.<br>
+
+### How difficult is it to find a hash digest beginning with at least twelve zeros?
+
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
@@ -61,4 +67,5 @@ It usually iterates over all input messages to find a specific result. With that
 8. https://crypto.stackexchange.com/questions/45377/why-cant-we-reverse-hashes
 9. https://www.thesslstore.com/blog/what-is-a-hash-function-in-cryptography-a-beginners-guide/
 10. https://www.quora.com/Is-it-possible-to-bruteforce-sha512-hash-function
-11. https://www.freecodecamp.org/news/brute-force-algorithms-explained/#:~:text=Brute%20Force%20Algorithms%20are%20exactly,%2C%20each%20from%200%2D9.
+11. https://www.freecodecamp.org/news/brute-force-algorithms-explained/#:~:text=Brute%20Force%20Algorithms%20are%20exactly,%2C%20each%20from%200%2D9
+12. https://www.govinfo.gov/content/pkg/GOVPUB-C13-a90b666c792967c1ef7dc3f026c75f45/pdf/GOVPUB-C13-a90b666c792967c1ef7dc3f026c75f45.pdf
