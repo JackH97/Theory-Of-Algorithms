@@ -3,6 +3,15 @@
 This repository on my github account is for the project for Theory of Algorithms, a module taught by Dr. Ian McLoughlin for 4th Year Software Development in Galway-Mayo Institute Of Technology(G.M.I.T).<br>
 For this project we were asked to write must write a program in the C programming language to calculate the SHA512 value of an input file. This program must take the name or path of the file as a command line argument and output the SHA512 digest of it. We also could't use any external libraries other than the libraries that are included in the C standard library. The program must compile using `gcc` or `clang` and also have to include a `Makefile`. which compiles it upon make being called in the project folder.
 
+## How to run the project
+In order to run the repository correctly, follow the steps below: <br>
+P.S. You will need to use a Open-Source Linux software such as Debian or Ubuntu to run this repo. <br>
+1. Clone the repository `Theory-Of-Algorithms` using the following command: ![Step 1](https://gyazo.com/d19898118c6be97873d9229b336ebdd8.png)
+2. After completing step 1, go into the Theory of Algorithms folder: <br> ![Step 2](https://gyazo.com/06db2f65cf0a12d02e8211e6a97561e2.png)
+3. After completing step 2, You then have to make the Sha-512.c file using the following command: <br>  ![Step 3](https://gyazo.com/fbfa9169f7bdebd1f4b96056fae177e6.png)
+4. After completing step 3, You then can run the file you just created using the following command: <br> ![Step 4](https://gyazo.com/150c3d77b1f0d9ad41e8572056573e16.png)
+5. After completing step 4, You can then run the tests using the makefile in the repository. The following commands will recreate the file again and run the tests: <br> ![Step 5 PT1](https://gyazo.com/642f9f4b9a963e3087d49c481d5892de.png) <br> ![Step 5 PT2](https://gyazo.com/a3d5a4cc4b69f6d80c7abffcd6f97f4f.png) <br> ![Step 5 PT3](https://gyazo.com/fb717d4552704d248969cb3eb60b81f8.png)
+
 
 ## What is the SHA-512 algorithm?
 The SHA-512 algorithm is a hashing algorithm that performs a hashing function on some data given to it while. It’s part of a group of hashing algorithms called SHA-2 which includes SHA-256 as well which is used in the bitcoin blockchain for hashing while operating on 8 64 bit words. This algorithm functions on a 1024-bit message block and a hash value of 512-bit. 
@@ -54,7 +63,16 @@ It usually iterates over all input messages to find a specific result. With that
 - Second preimage resistance: Like the first time it's impossible to find a second input that has the same hash value as other inputs. For this it is measured by the amount of work that would be needed to have a high probability of finding a second preimage for a hash function. However, for some hash functions, the second preimage resistance strength also depends on the message length processed by the hash function.<br>
 
 ### How difficult is it to find a hash digest beginning with at least twelve zeros?
+In my research on this question, there can be ways in which you can find a hash digest with at least twelve zeros at the beginning.<br>
 
+A hash function is a process that takes input data and performs an operation on it, and returns output data of a fixed size. In bitcoin, hash functions are part of the block hashing algorithm which is used to write new transactions into blockchain through mining. <br>
+
+In regards to cryptocurrency mining, bitcoin uses cryptography with the hash function called double SHA-256(the sha-256 hash of the sha-256 hash of something). The hash then takes a large chunk of the data as inputs and shrinks it down into smaller hash values. With cryptographic, you can't get a hash value you want without trying a lot of inputs. The process then goes, we need to mine a block which we collect from a new transaction, then  hash the block into 256-bit block hash value. Here we can be able to see if the hash has enough zeros and if so then it's sucessful and the hash becomes the identifier for the block. But most of the time this doesn't happen and then we have to modify the block again and again and this process happens every 10 mins and when sucessful again you restart the process. From my research, the diagram below shows the structure of a block:
+![Bitcoin Block Structure](https://gyazo.com/4360d51f3bd0965109fba8b901a807bf.png) 
+
+The Yellow section is the block header, followed by the transaction that goes into the block. The first transaction is the coinbase that grants a award to the person mining bitcoin. The rest of the transactions are standard transactions moving bitcoins around. If the hash header starts with enough zeros, the block is successful.<br>
+
+To explain the different parts of the diagram. The first section is the protocol version. Second section is the the hash value of the previous block in the chain to make certain all blocks come together to form an unbroken sequence in the chain. Third section is the merkle root is the hash of all the hashes of all the transactions that are part of a block in a blockchain network and is very important in security because it makes sure that transactions cannot be changed when they become part of the block. Fourth section is the timestamp of the block which is a small piece of data stored in each block where it's main function is to determine the moment in which the block has been mined and validated by the network. Fifth section is the difficulty value bits which is a measure of how difficult it is to find a hash below a given target and here the value changes after every 2016 blocks to keep security for it in good shape. Last section is the nonce which is some value that varies with time, in order to verify that specific values are not reused with the term itself standing for “number used once”. 
 
 ## References
 1. https://medium.com/@zaid960928/cryptography-explaining-sha-512-ad896365a0c1#:~:text=SHA%2D512%20is%20a%20hashing,some%20data%20given%20to%20it.&text=It's%20part%20of%20a%20group,the%20bitcoin%20blockchain%20for%20hashing.
@@ -69,3 +87,5 @@ It usually iterates over all input messages to find a specific result. With that
 10. https://www.quora.com/Is-it-possible-to-bruteforce-sha512-hash-function
 11. https://www.freecodecamp.org/news/brute-force-algorithms-explained/#:~:text=Brute%20Force%20Algorithms%20are%20exactly,%2C%20each%20from%200%2D9
 12. https://www.govinfo.gov/content/pkg/GOVPUB-C13-a90b666c792967c1ef7dc3f026c75f45/pdf/GOVPUB-C13-a90b666c792967c1ef7dc3f026c75f45.pdf
+13. https://crypto.stackexchange.com/questions/89690/sha-512-how-difficult-is-it-to-find-a-hash-digest-beginning-with-at-least-twel
+14. http://www.righto.com/2014/02/bitcoin-mining-hard-way-algorithms.html
